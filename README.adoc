@@ -1,0 +1,9 @@
+= FeatureHub Cloud Events
+
+This repository stores various Cloud Events libraries either long term or before they find their final
+resting place in their final location (which would generally be https://github.com/cloudevents/sdk-java/)
+
+Typically a protocol binding will go through specification + implementation and then be formally published.
+We need a place where we can experiment with that while pushing on with support for various eventing platforms
+as part of FeatureHub.
+

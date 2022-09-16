@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.featurehub.cloudevents</groupId>
+    <artifactId>cloudevents-nats</artifactId>
+    <version>1.1-SNAPSHOT</version>
+    <name>CloudEvents - NATS Binding</name>
+    <packaging>jar</packaging>
+
+    <description>
+        A NATS Protocol binding for Java for Cloud Events.
+    </description>
+
+    <url>https://featurehub.io</url>
+    <developers>
+        <developer>
+            <email>irina@featurehub.io</email>
+            <id>isouthwell</id>
+            <name>Irina Southwell</name>
+            <organization>Anyways Labs Ltd</organization>
+        </developer>
+
+        <developer>
+            <email>richard@featurehub.io</email>
+            <id>rvowles</id>
+            <name>Richard Vowles</name>
+            <organization>Anyways Labs Ltd</organization>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <nats.version>2.15.6</nats.version>
+        <cloudevents.version>2.4.0</cloudevents.version>
+        <assertj-core.version>3.16.1</assertj-core.version>
+        <junit-jupiter.version>5.7.0</junit-jupiter.version>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git@github.com:featurehub-io/featurehub-cloudevents.git</connection>
+        <developerConnection>scm:git:git@github.com:featurehub-io/featurehub-cloudevents.git</developerConnection>
+        <url>git@github.com:featurehub-io/featurehub-cloudevents.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.cloudevents</groupId>
+            <artifactId>cloudevents-core</artifactId>
+            <version>${cloudevents.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.nats</groupId>
+            <artifactId>jnats</artifactId>
+            <version>${nats.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Test deps -->
+        <dependency>
+            <groupId>io.cloudevents</groupId>
+            <artifactId>cloudevents-core</artifactId>
+            <classifier>tests</classifier>
+            <type>test-jar</type>
+            <version>${cloudevents.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cloudevents</groupId>
+            <artifactId>cloudevents-json-jackson</artifactId>
+            <version>${cloudevents.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.assertj</groupId>
+            <artifactId>assertj-core</artifactId>
+            <version>${assertj-core.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>${junit-jupiter.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <!-- we use the Java SDK tiles to define the build to save time -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                <version>2.23</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <filtering>false</filtering>
+                    <tiles>
+                        <tile>io.featurehub.sdk.tiles:tile-java8:[1.1,2)</tile>
+                        <tile>io.featurehub.sdk.tiles:tile-release:[1.1,2)</tile>
+                        <tile>io.featurehub.sdk.tiles:tile-sdk:[1.1-SNAPSHOT,2)</tile>
+                    </tiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
