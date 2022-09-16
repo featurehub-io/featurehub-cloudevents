@@ -1,10 +1,11 @@
-package io.cloudevents.nats;
+package io.cloudevents.gpubsub;
 
+import com.google.protobuf.Message;
+import com.google.pubsub.v1.PubsubMessage;
 import io.cloudevents.CloudEvent;
 import io.cloudevents.core.v1.CloudEventBuilder;
+import io.cloudevents.gpubsub.impl.PubsubHeadersTest;
 import io.cloudevents.jackson.JsonFormat;
-import io.cloudevents.nats.impl.NatsHeadersTest;
-import io.nats.client.Message;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -14,17 +15,17 @@ import java.time.OffsetDateTime;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-public class NatsMessageFactoryTest {
+public class PubsubMessageFactoryTest {
     private CloudEvent event;
 
     @BeforeEach
     public void before() {
         event = new CloudEventBuilder()
             .withData("application/json", "\"test-data\"".getBytes(StandardCharsets.UTF_8))
-            .withSource(URI.create(NatsHeadersTest.fullUrl))
+            .withSource(URI.create(PubsubHeadersTest.fullUrl))
             .withId("event-id")
             .withTime(OffsetDateTime.now())
-            .withType(NatsHeadersTest.emojiRaw).build();
+            .withType(PubsubHeadersTest.emojiRaw).build();
     }
 
     private void compare(CloudEvent decoded) {
@@ -36,18 +37,18 @@ public class NatsMessageFactoryTest {
 
     @Test
     public void encodeDecodeStructured() {
-        Message m = NatsMessageFactory.createWriter("fred").writeStructured(event, new JsonFormat());
+        PubsubMessage m = PubsubMessageFactory.createWriter().writeStructured(event, new JsonFormat());
 
-        CloudEvent decoded = NatsMessageFactory.createReader(m).toEvent();
+        CloudEvent decoded = PubsubMessageFactory.createReader(m).toEvent();
 
         compare(decoded);
     }
 
     @Test
     public void encodeDecodeBinary() {
-        Message m = NatsMessageFactory.createWriter("fred").writeBinary(event);
+        PubsubMessage m = PubsubMessageFactory.createWriter().writeBinary(event);
 
-        CloudEvent decoded = NatsMessageFactory.createReader(m).toEvent();
+        CloudEvent decoded = PubsubMessageFactory.createReader(m).toEvent();
 
         compare(decoded);
     }

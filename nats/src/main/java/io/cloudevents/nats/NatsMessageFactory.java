@@ -75,4 +75,5 @@ public class NatsMessageFactory {
      */
     public static MessageWriter<CloudEventWriter<Message>, Message> createWriter(@Nullable String subject) {
         return new NatsMessageWriterImpl(subject);
-    }}
+    }
+}

@@ -38,6 +38,7 @@
 
     <modules>
         <module>nats</module>
+        <module>google-pubsub</module>
     </modules>
 </project>
 

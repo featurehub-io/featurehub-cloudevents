@@ -1,0 +1,4 @@
+= Google Pub/Sub binding for Java SDK
+
+This SDK binding is relatively simple, as there are no mappings for headers required.
+
