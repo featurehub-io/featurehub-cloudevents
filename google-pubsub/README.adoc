@@ -2,3 +2,42 @@
 
 This SDK binding is relatively simple, as there are no mappings for headers required.
 
+
+== Decoding messages
+Once you have a message, it is fairly simple to deal with:
+
+ $ PubSubMessageFactory.createReader(msg).toEvent()
+
+A sample from FeatureHub:
+
+[source,kotlin]
+----
+class PubSubscriberMessageReceiver(
+  private val message: (msg: CloudEvent) -> Boolean,
+) : MessageReceiver {
+  private val log: Logger = LoggerFactory.getLogger(PubSubscriberMessageReceiver::class.java)
+
+  override fun receiveMessage(message: PubsubMessage, consumer: AckReplyConsumer) {
+    log.debug("pubsub: received message id: {} => {}", message.messageId, message.attributesMap)
+
+    PubsubMessageFactory.createReader(message).toEvent()?.let {
+      if (message(it)) {
+        consumer.ack()
+      } else {
+        consumer.nack()
+      }
+    } ?: failed(message, consumer)
+  }
+
+  private fun failed(message: PubsubMessage, consumer: AckReplyConsumer) {
+    log.error("received a message we could not decode {}", message)
+    consumer.nack()
+  }
+}
+----
+
+== Encoding messages
+
+ $ PubsubMessageFactory.createWriter.writeBinary(event)
+
+You can of course also write a structured event.
