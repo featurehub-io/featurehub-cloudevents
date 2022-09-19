@@ -67,7 +67,8 @@
         <dependency>
             <groupId>com.google.cloud</groupId>
             <artifactId>google-cloud-pubsub</artifactId>
-            <version>[${google-pubsub.version}]</version>
+            <version>${google-pubsub.version}</version>
+            <scope>provided</scope>
         </dependency>
 
         <!-- Test deps -->
