@@ -1,0 +1,9 @@
+= Kinesis Cloud Events support
+
+This library supports encoding and decoding messages for Kinesis for Cloud Events in the same
+basic format/structure as other SDKs. It has a KinesisMessageFactory that you can use to create a `PutRecordRequest.Builder`
+and one which reads `KinesisClientRecord`.
+
+Kinesis only supports a binary data packet, it does not support headers, so all CloudEvents are sent as structured
+messages, even if you use writeBinary.
+

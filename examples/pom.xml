@@ -5,11 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>io.featurehub</groupId>
-    <artifactId>featurehub-cloudevents</artifactId>
+    <artifactId>featurehub-cloudevents-examples</artifactId>
     <version>1.1.1</version>
     <packaging>pom</packaging>
 
-    <description>Reactor project for FeatureHub incubating CloudEvents contributions</description>
+    <description>Reactor project for FeatureHub incubating CloudEvents examples</description>
 
     <url>https://featurehub.io</url>
     <developers>
@@ -37,10 +37,7 @@
     </licenses>
 
     <modules>
-        <module>nats</module>
-        <module>google-pubsub</module>
-        <module>kinesis</module>
-        <module>examples</module>
+        <module>kinesis-example</module>
     </modules>
 </project>
 

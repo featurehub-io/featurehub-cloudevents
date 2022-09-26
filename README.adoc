@@ -7,3 +7,11 @@ Typically a protocol binding will go through specification + implementation and 
 We need a place where we can experiment with that while pushing on with support for various eventing platforms
 as part of FeatureHub.
 
+We support implementations for:
+
+- Google Pub/Sub - based on the published beta spec from the original knative repository.
+- NATS - based on the actual published spec
+- Kinesis - there is no spec for this but Kinesis only supports structured Cloud Events so all events are written
+using the JSON formatter that is part of the spec.
+
+

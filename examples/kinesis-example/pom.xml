@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>io.featurehub.cloudevents.examples</groupId>
+    <artifactId>kinesis</artifactId>
+    <version>1.1-SNAPSHOT</version>
+    <name>CloudEvents - AWS Kinesis (TM) Example</name>
+    <packaging>jar</packaging>
+
+    <description>
+        An example of KWS Kinesis
+    </description>
+
+    <url>https://featurehub.io</url>
+    <developers>
+        <developer>
+            <email>irina@featurehub.io</email>
+            <id>isouthwell</id>
+            <name>Irina Southwell</name>
+            <organization>Anyways Labs Ltd</organization>
+        </developer>
+
+        <developer>
+            <email>richard@featurehub.io</email>
+            <id>rvowles</id>
+            <name>Richard Vowles</name>
+            <organization>Anyways Labs Ltd</organization>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <properties>
+        <cloudevents.version>2.4.0</cloudevents.version>
+        <log4j.version>2.19.0</log4j.version>
+        <aws.kcl-client.version>2.4.3</aws.kcl-client.version>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git@github.com:featurehub-io/featurehub-cloudevents.git</connection>
+        <developerConnection>scm:git:git@github.com:featurehub-io/featurehub-cloudevents.git</developerConnection>
+        <url>git@github.com:featurehub-io/featurehub-cloudevents.git</url>
+        <tag>HEAD</tag>
+    </scm>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.code.findbugs</groupId>
+            <artifactId>jsr305</artifactId>
+            <version>3.0.2</version>
+            <scope>provided</scope>
+            <optional>true</optional>
+        </dependency>
+        <dependency>
+            <groupId>io.cloudevents</groupId>
+            <artifactId>cloudevents-core</artifactId>
+            <version>${cloudevents.version}</version>
+        </dependency>
+        <!-- kinesis does not support headers, so it is always structured format -->
+        <dependency>
+            <groupId>io.cloudevents</groupId>
+            <artifactId>cloudevents-json-jackson</artifactId>
+            <version>${cloudevents.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>software.amazon.kinesis</groupId>
+            <artifactId>amazon-kinesis-client</artifactId>
+            <version>${aws.kcl-client.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>io.featurehub.cloudevents</groupId>
+            <artifactId>cloudevents-kinesis</artifactId>
+            <version>[1.1-SNAPSHOT, 2)</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-slf4j2-impl</artifactId>
+            <version>[${log4j.version}]</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>[${log4j.version}]</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>[${log4j.version}]</version>
+        </dependency>
+    </dependencies>
+
+    <!-- we use the Java SDK tiles to define the build to save time -->
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>io.repaint.maven</groupId>
+                <artifactId>tiles-maven-plugin</artifactId>
+                <version>2.23</version>
+                <extensions>true</extensions>
+                <configuration>
+                    <filtering>false</filtering>
+                    <tiles>
+                        <tile>io.featurehub.sdk.tiles:tile-java8:[1.1,2)</tile>
+                    </tiles>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
+
