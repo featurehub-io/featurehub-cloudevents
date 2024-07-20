@@ -38,7 +38,7 @@
     </licenses>
 
     <properties>
-        <cloudevents.version>2.4.0</cloudevents.version>
+        <cloudevents.version>4.0.1</cloudevents.version>
         <google-pubsub.version>1.120.15</google-pubsub.version>
         <assertj-core.version>3.16.1</assertj-core.version>
         <junit-jupiter.version>5.7.0</junit-jupiter.version>
