@@ -4,7 +4,7 @@
 
     <groupId>io.featurehub.cloudevents</groupId>
     <artifactId>cloudevents-google-pubsub</artifactId>
-    <version>1.2-SNAPSHOT</version>
+    <version>1.2</version>
     <name>CloudEvents - Google (TM) PubSub Binding</name>
     <packaging>jar</packaging>
 
@@ -48,7 +48,7 @@
         <connection>scm:git:git@github.com:featurehub-io/featurehub-cloudevents.git</connection>
         <developerConnection>scm:git:git@github.com:featurehub-io/featurehub-cloudevents.git</developerConnection>
         <url>git@github.com:featurehub-io/featurehub-cloudevents.git</url>
-        <tag>HEAD</tag>
+        <tag>cloudevents-google-pubsub-1.2</tag>
     </scm>
 
     <dependencies>
