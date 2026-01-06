@@ -39,7 +39,7 @@
 
     <properties>
         <cloudevents.version>2.4.0</cloudevents.version>
-        <log4j.version>2.19.0</log4j.version>
+        <log4j.version>[2.25.3]</log4j.version>
         <aws.kcl-client.version>2.4.3</aws.kcl-client.version>
     </properties>
 
@@ -92,7 +92,7 @@
         <dependency>
             <groupId>org.apache.logging.log4j</groupId>
             <artifactId>log4j-core</artifactId>
-            <version>[${log4j.version}]</version>
+            <version>[${log4j.version}</version>
         </dependency>
     </dependencies>
 
